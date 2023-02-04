@@ -8,15 +8,16 @@ public class CloneScript : MonoBehaviour
     
     // Start is called before the first frame update
     private List<ActionReplay> PreInput;
-    public PlayerScript sc;
     int i=0;
-    public GameObject clnObj;
+    
+    private float xinp;
+    private float jk;
     public Rigidbody2D rb;
     private float speed;
     void Start()
     {
-        clnObj.SetActive(false);
-        rb=clnObj.GetComponent<Rigidbody2D>();
+    
+        PlayerScript sc=GameObject.Find("Player").GetComponent<PlayerScript>();
         PreInput=sc.InputRecord;
         speed=sc.speed;
     }
@@ -25,17 +26,20 @@ public class CloneScript : MonoBehaviour
     void Update()
     {
        
-    
-        if(Time.time>5){
-            
-        ActionReplay temp=PreInput[i];
-        rb.transform.position=new Vector2 ( rb.transform.position.x + speed*temp.Xinput*Time.deltaTime,rb.transform.position.y+ temp.jInput*speed*Time.deltaTime);
-        
-
-        i++;
-        }
+     
+       
     }
 
+    void FixedUpdate() {
 
+        
+        ActionReplay temp=PreInput[i];
+        xinp=temp.Xinput;
+        jk=temp.jInput;
+        i++;
+        rb.transform.position=new Vector2 ( rb.transform.position.x + speed*xinp*Time.deltaTime,rb.transform.position.y+ jk*speed*Time.deltaTime);
+       
+           
+    }
 
 }

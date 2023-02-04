@@ -8,7 +8,7 @@ public class SpawnerScript : MonoBehaviour
     public GameObject PlayerPrefab;
     public Transform[] spwanpoints;
 
-    public float TimeToSpawn=5;
+    public float TimeToSpawn;
 
     // Start is called before the first frame update
     

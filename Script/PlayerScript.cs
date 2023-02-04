@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.transform.position=new Vector2(1,1);
+        rb.transform.position=new Vector2(1,0);
     }
 
     // Update is called once per frame
@@ -24,16 +24,15 @@ public class PlayerScript : MonoBehaviour
     
 
 
-    horizontal=Input.GetAxisRaw("Horizontal");   
-
-    ActionReplay temp=new ActionReplay{Xinput=horizontal,jInput=0};
-    InputRecord.Add(temp);
+    
 
     }
     
      void FixedUpdate() {
 
-
+        horizontal=Input.GetAxisRaw("Horizontal");   
+        ActionReplay temp=new ActionReplay{Xinput=horizontal,jInput=0};
+        InputRecord.Add(temp);
         rb.transform.position=(new Vector2(rb.transform.position.x +speed*horizontal*Time.deltaTime,rb.transform.position.y ));    
     }
  
